@@ -26,6 +26,7 @@ def loop():
         time.sleep(1)                   # Wait for 1 second
 
 def destroy():
+    GPIO.output(ledPin, GPIO.LOW)
     GPIO.cleanup()                      # Release all GPIO
 
 if __name__ == '__main__':    # Program entrance
@@ -33,6 +34,6 @@ if __name__ == '__main__':    # Program entrance
     setup()
     try:
         loop()
-    except KeyboardInterrupt:   # Press ctrl-c to end the program.
+    except:   # Press ctrl-c to end the program.
         destroy()
 

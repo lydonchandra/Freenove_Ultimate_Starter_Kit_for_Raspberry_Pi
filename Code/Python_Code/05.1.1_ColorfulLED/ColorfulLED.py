@@ -9,7 +9,7 @@ import RPi.GPIO as GPIO
 import time
 import random
 
-pins = [11, 12, 13]         # define the pins for R:11,G:12,B:13 
+pins = [11, 12, 1]         # define the pins for R:11,G:12,B:13
 
 def setup():
     global pwmRed,pwmGreen,pwmBlue  
@@ -38,6 +38,9 @@ def loop():
         time.sleep(1)
         
 def destroy():
+    pwmRed.ChangeDutyCycle(0)     # change pwmRed duty cycle to r_val
+    pwmGreen.ChangeDutyCycle(0)
+    pwmBlue.ChangeDutyCycle(0)
     pwmRed.stop()
     pwmGreen.stop()
     pwmBlue.stop()
@@ -48,5 +51,5 @@ if __name__ == '__main__':     # Program entrance
     setup()
     try:
         loop()
-    except KeyboardInterrupt:  # Press ctrl-c to end the program.
+    except:  # Press ctrl-c to end the program.
         destroy()
